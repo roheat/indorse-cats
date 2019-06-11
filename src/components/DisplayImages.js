@@ -53,12 +53,29 @@ class DisplayImages extends React.Component {
 		});
 	}
 
+	areAllVisited = details => {
+		return details.every(val => val.visited === true)
+	}
+
+	getHighest = details => {
+		details.sort((a, b) => b.count - a.count);
+		const highestRatedImages = details.slice(0, 3);
+		return highestRatedImages.map(image => {
+			return (
+				<div key={image.id}>
+					<img src={`/images/${image.id}.jpg`} alt="highest_rated"/>
+					<h3>Rating: {image.count}</h3>
+				</div>
+			)
+		})
+	}
+
 	render() {
-		const { image1, image2 } = this.state;
+		const { image1, image2, details } = this.state;
 		return (
 			<div>
 				{
-					image1 && image2 ?
+					!this.areAllVisited(details) ?
 					<div className="image_container">
 						<div className="image" onClick={() => this.handleClick(image1)}>
 							<img src={`/images/${image1}.jpg`} alt="random_image"/>
@@ -67,7 +84,12 @@ class DisplayImages extends React.Component {
 							<img src={`/images/${image2}.jpg`} alt="random_image" />
 						</div>
 					</div>
-					:null
+					:
+					<div>
+						<h1>Completed!</h1>
+						<h3>Highest Rated Cats:</h3>
+						 {this.getHighest(details)}
+					</div>
 				}
 			</div>
 		);
