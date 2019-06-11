@@ -1,13 +1,22 @@
 import React from 'react';
 import _ from 'lodash';
+import HighestRated from './HighestRated';
 
 class DisplayImages extends React.Component {
 	
 	state = {
-		imageCount: 10,
+		imageCount: 20,
 		image1: '',
 		image2: '',
-		details: [] 
+		details: [],
+		messageList: [
+			'Meoowwwwww!',
+			'Stay Paw-sitive!', 
+			'Nobody is Purr-fect!',
+			'Cat puns freak meowt!',
+			'Meow you doin?'
+		],
+		message: ''
 	}
 
 	componentDidMount() {
@@ -48,27 +57,23 @@ class DisplayImages extends React.Component {
 		let newDetails = this.state.details;
 		newDetails[index - 1].count = newDetails[index - 1].count + 1;
 
+		let [message] = _.shuffle(this.state.messageList);
+		this.setState({ message });
+
+
+		setTimeout(() => {
+			this.setState({ message: '' });
+		}, 1000);
+
 		this.setState({ details: newDetails }, () => {
 			this.generateRandomImages();
 		});
 	}
 
 	areAllVisited = details => {
-		return details.every(val => val.visited === true)
+		return details.every(val => val.visited === true);
 	}
 
-	getHighest = details => {
-		details.sort((a, b) => b.count - a.count);
-		const highestRatedImages = details.slice(0, 3);
-		return highestRatedImages.map(image => {
-			return (
-				<div key={image.id} className="highest_rated">
-					<img src={`/images/${image.id}.jpg`} alt="highest_rated"/>
-					<h3>Rating: {image.count}</h3>
-				</div>
-			)
-		})
-	}
 
 	handleBoth = (i, j) => {
 		let newDetails = this.state.details;
@@ -81,18 +86,25 @@ class DisplayImages extends React.Component {
 	} 
 
 	render() {
-		const { image1, image2, details } = this.state;
+		const { image1, image2, details, message } = this.state;
 		return (
 			<div>
 				{
 					!this.areAllVisited(details) ?
-					<div className="image_container">
-						<div className="image" onClick={() => this.handleClick(image1)}>
-							<img src={`/images/${image1}.jpg`} alt="random_image"/>
+					<div>
+						<div className="image_container">
+							<div className="image" onClick={() => this.handleClick(image1)}>
+								<img src={`/images/${image1}.jpg`} alt="random_image"/>
+							</div>
+							<div className="image" onClick={() => this.handleClick(image2)}>
+								<img src={`/images/${image2}.jpg`} alt="random_image" />
+							</div>
 						</div>
-						<div className="image" onClick={() => this.handleClick(image2)}>
-							<img src={`/images/${image2}.jpg`} alt="random_image" />
-						</div>
+						{
+							message ?
+							<div className="message">{message}</div>
+							: null
+						}
 						<div className="button_wrapper">
 							<div className="button" onClick={() => this.generateRandomImages()}>
 								None of these
@@ -101,13 +113,10 @@ class DisplayImages extends React.Component {
 								Both of these
 							</div>
 						</div>
+					
 					</div>
 					:
-					<div>
-						<h1>Completed!</h1>
-						<h3>Top 3 Highest Rated Cats:</h3>
-						 {this.getHighest(details)}
-					</div>
+					<HighestRated details={details} />
 				}
 			</div>
 		);
