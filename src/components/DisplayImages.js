@@ -5,55 +5,66 @@ class DisplayImages extends React.Component {
 	
 	state = {
 		imageCount: 10,
-		images: [],
-		visitedBool: [],
-		visitedCount: [] 
+		image1: '',
+		image2: '',
+		details: [] 
 	}
 
 	componentDidMount() {
-		let falseArr = Array(this.state.imageCount).fill().map(() => false);
-		let zeroArr = Array(this.state.imageCount).fill().map(() => 0);
-		this.setState({ visitedBool: falseArr, visitedCount: zeroArr });
-		this.generateRandomImages();
+		let details = [];
+		for (let i = 0; i < this.state.imageCount; i++) {
+			details.push({
+				id: i+1,
+				count: 0,
+				visited: false
+			});
+		}
+
+		this.setState({ details }, () => {
+			this.generateRandomImages();
+		});
 	}
 
 	generateRandomImages = () => {
 		let arr = Array(this.state.imageCount).fill().map((_, i) => i = i+1);
-		let images = [];
 		let randArray = _.shuffle(arr);
 
-		images.push(randArray[0]);
-		images.push(randArray[1]);
+		const image1 = randArray[0];
+		const image2 = randArray[1];
+	
+		let newDetails = this.state.details;
 		
-		let newBoolArr = this.state.visitedBool;
-		newBoolArr[images[0]] = true;
-		newBoolArr[images[1]] = true;
-		
+		newDetails[image1 - 1].visited = true;
+		newDetails[image2 - 1].visited = true;
+
 		this.setState({
-			images,
-			visitedBool: newBoolArr
+			image1,
+			image2,
+			details: newDetails
 		});
 	}
 
 	handleClick = (index) => {
-		let newCountArr = this.state.visitedCount;
-		newCountArr[index-1] = newCountArr[index-1] + 1;
-		this.setState({ visitedCount: newCountArr });
-		this.generateRandomImages();
+		let newDetails = this.state.details;
+		newDetails[index - 1].count = newDetails[index - 1].count + 1;
+
+		this.setState({ details: newDetails }, () => {
+			this.generateRandomImages();
+		});
 	}
 
 	render() {
-		console.log(this.state.visitedBool);
+		const { image1, image2 } = this.state;
 		return (
 			<div>
 				{
-					this.state.images ?
+					image1 && image2 ?
 					<div className="image_container">
-						<div className="image" onClick={() => this.handleClick(this.state.images[0])}>
-							<img src={`/images/${this.state.images[0]}.jpg`} alt="random_image"/>
+						<div className="image" onClick={() => this.handleClick(image1)}>
+							<img src={`/images/${image1}.jpg`} alt="random_image"/>
 						</div>
-						<div className="image" onClick={() => this.handleClick(this.state.images[1])}>
-							<img src={`/images/${this.state.images[1]}.jpg`} alt="random_image" />
+						<div className="image" onClick={() => this.handleClick(image2)}>
+							<img src={`/images/${image2}.jpg`} alt="random_image" />
 						</div>
 					</div>
 					:null
