@@ -57,17 +57,20 @@ class DisplayImages extends React.Component {
 		let newDetails = this.state.details;
 		newDetails[index - 1].count = newDetails[index - 1].count + 1;
 
-		let [message] = _.shuffle(this.state.messageList);
-		this.setState({ message });
-
-
-		setTimeout(() => {
-			this.setState({ message: '' });
-		}, 1000);
+		this.displayMessage();
 
 		this.setState({ details: newDetails }, () => {
 			this.generateRandomImages();
 		});
+	}
+
+	displayMessage() {
+		let [message] = _.shuffle(this.state.messageList);
+		this.setState({ message });
+
+		setTimeout(() => {
+			this.setState({ message: '' });
+		}, 1000);
 	}
 
 	areAllVisited = details => {
@@ -78,6 +81,8 @@ class DisplayImages extends React.Component {
 		let newDetails = this.state.details;
 		newDetails[i - 1].count = newDetails[i - 1].count + 1;
 		newDetails[j - 1].count = newDetails[j - 1].count + 1;
+
+		this.displayMessage();
 
 		this.setState({ details: newDetails }, () => {
 			this.generateRandomImages();
