@@ -1,68 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [Which is my cat?]()
 
-## Available Scripts
+![Which-is-my-cat](screenshots/example.JPG)
 
-In the project directory, you can run:
+> A front end app created using React for simulating a web UI that could be used for training an ML model using supervised learning.
 
-### `npm start`
+---
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Table of Contents
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- [Description](#description)
+- [Installation](#installation)
+- [License](#license)
+- [Info](#info)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Description
 
-### `npm run build`
+The aim of this assignment is to get help from the user to train a dataset of images and correctly tag the images of cats. You can store up to 20 to 30 images in an /images folder in your codebase. Some of these images will be actual cat photos and others need to be of random objects. You need to get the user to click on actual cat images and then rate those images accurately based on the user feedback. When you shuffle through all the images, at the end, you will need to show the images to the user with the most ratings.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Have a look at the Live version here.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Technologies
 
-### `npm run eject`
+- React
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### `Step 1` - Clone the repo
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+$ git clone https://github.com/roheat/indorse-cats.git
+```
 
-## Learn More
+#### `Step 2` - cd in the repo
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+$ cd indorse-cats
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### `Step 3` - Install dependencies
 
-### Code Splitting
+```bash
+$ npm install
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### `Step 4` - Run application
 
-### Analyzing the Bundle Size
+```bash
+$ npm start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+In browser, open [http://localhost:3000](http://localhost:3000)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## License
 
-### Advanced Configuration
+MIT © [roheat](https://github.com/roheat)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+---
 
-### Deployment
+## Info
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Website - [roheat.com](https://roheat.com)
+- Twitter - [@roheatdotcom](https://twitter.com/roheatdotcom)
+- LinkedIn - [Rohith Srivathsav](https://www.linkedin.com/in/rohith-srivathsav/)
