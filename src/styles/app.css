@@ -1,0 +1,26 @@
+.container {
+	width: 100%;
+}
+
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+}
+
+.container h1 {
+	text-align: center;
+}
+
+.image_container {
+	text-align: center;
+	width: 100%;
+	display: inline-block;
+}
+
+.image_container .image img{
+    margin-left: 100px;
+    float: left;
+    width: 40%;
+    max-height: 400px;
+    cursor: pointer;
+}
