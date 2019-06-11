@@ -62,7 +62,7 @@ class DisplayImages extends React.Component {
 		const highestRatedImages = details.slice(0, 3);
 		return highestRatedImages.map(image => {
 			return (
-				<div key={image.id}>
+				<div key={image.id} className="highest_rated">
 					<img src={`/images/${image.id}.jpg`} alt="highest_rated"/>
 					<h3>Rating: {image.count}</h3>
 				</div>
@@ -87,7 +87,7 @@ class DisplayImages extends React.Component {
 					:
 					<div>
 						<h1>Completed!</h1>
-						<h3>Highest Rated Cats:</h3>
+						<h3>Top 3 Highest Rated Cats:</h3>
 						 {this.getHighest(details)}
 					</div>
 				}

@@ -2,7 +2,7 @@
 	width: 100%;
 }
 
-h1 {
+h1, h2, h3 {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 30px;
 }
@@ -18,9 +18,27 @@ h1 {
 }
 
 .image_container .image img{
-    margin-left: 100px;
+    margin-left: 50px;
     float: left;
     width: 40%;
     max-height: 400px;
     cursor: pointer;
+}
+
+.highest_rated {
+	display: inline-block;
+}
+
+.highest_rated img {
+	margin-left: 50px;
+    float: left;
+    margin-bottom: 30px;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.highest_rated h3 {
+	margin-top: 100px;
+	font-size: 30px;
+	text-align: center;
 }
