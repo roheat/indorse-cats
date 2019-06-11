@@ -74,7 +74,6 @@ class DisplayImages extends React.Component {
 		return details.every(val => val.visited === true);
 	}
 
-
 	handleBoth = (i, j) => {
 		let newDetails = this.state.details;
 		newDetails[i - 1].count = newDetails[i - 1].count + 1;
