@@ -70,6 +70,16 @@ class DisplayImages extends React.Component {
 		})
 	}
 
+	handleBoth = (i, j) => {
+		let newDetails = this.state.details;
+		newDetails[i - 1].count = newDetails[i - 1].count + 1;
+		newDetails[j - 1].count = newDetails[j - 1].count + 1;
+
+		this.setState({ details: newDetails }, () => {
+			this.generateRandomImages();
+		});
+	} 
+
 	render() {
 		const { image1, image2, details } = this.state;
 		return (
@@ -82,6 +92,14 @@ class DisplayImages extends React.Component {
 						</div>
 						<div className="image" onClick={() => this.handleClick(image2)}>
 							<img src={`/images/${image2}.jpg`} alt="random_image" />
+						</div>
+						<div className="button_wrapper">
+							<div className="button" onClick={() => this.generateRandomImages()}>
+								None of these
+							</div>
+							<div className="button" onClick={() => this.handleBoth(image1, image2)}>
+								Both of these
+							</div>
 						</div>
 					</div>
 					:

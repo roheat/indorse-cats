@@ -25,6 +25,26 @@ h1, h2, h3 {
     cursor: pointer;
 }
 
+.button_wrapper {
+	display: inline-block;
+	width: 100%;
+	margin-top: 100px;
+}
+
+.button {
+	width: 30%;
+	float: left;
+	margin: 10px 110px;
+	border: 1px solid black;
+	cursor: pointer;
+	font-size: 20px;
+	padding: 10px 5px;
+}
+
+.button:hover {
+    background-color: #e2e2e2;
+}
+
 .highest_rated {
 	display: inline-block;
 }
